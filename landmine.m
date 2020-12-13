@@ -14,7 +14,7 @@ function landmine(v)
         case 3
             D=26;B=99;
     end
-    figure('Name','Landmine');axis([0 D 0 D]);hold on;
+    figure('Name','Landmine');axis([0 D 0 D]);axis off;hold on;
     q=0;hp=[];flagX=[];flagY=[];           %D is the board size,the rest are all for record the flag
     for ii=1:D-1                                %draw the board
         plot([1 1]*ii,[1 D-1],'k');hold on;     
@@ -23,7 +23,7 @@ function landmine(v)
     map=zeros(D);                              %the board with recording the bomb and the numbers
     open=zeros(D);                             %the board with recording if the square are opened
     xx=0;yy=0;                                    %the first click to start the game
-    st=text(D/3,D/2,'Start!','FontSize',45,'Color','g');pause(1.6);delete(st);
+    st=text(D/3,D/2,'Start!','FontSize',45,'Color','g');pause(2.5);delete(st);
     while xx<1 || yy<1 || xx>D-1 || yy>D-1 || b~=1
         [xx,yy,b]=ginput(1);
     end                        
@@ -51,7 +51,8 @@ function landmine(v)
     for ax=2:D-1                                 %write the numbers of bomb
         for ay=2:D-1
             if land(ax,ay,2)==1
-                text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)))
+                but(ax,ay)
+                text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)),'Color',[77 77 77]/255)
                 land(ax,ay,2)=land(ax,ay,2)+1;
             end
         end
@@ -75,7 +76,8 @@ function landmine(v)
                 for ax=2:D-1
                     for ay=2:D-1
                         if land(ax,ay,2)==1
-                            text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)))
+                            but(ax,ay);
+                            text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)),'Color',[77 77 77]/255)
                             land(ax,ay,2)=2;
                         end
                     end
@@ -83,15 +85,11 @@ function landmine(v)
             else                                %if click not both bomb and zero
                 if land(x,y,2)==0
                     land(x,y,2)=1;                  %recording opened
-                    text(x-0.5,y-0.5,num2str(map(x,y)));%write!
+                    but(x,y)
+                    text(x-0.5,y-0.5,num2str(map(x,y)),'Color',[77 77 77]/255);%write!
                     land(x,y,2)=2;
                 elseif land(x,y,2)==1
                 end
-            end
-            s=end_or_not(land);
-            if s==(D-2)^2-B
-                text(D/4,D/2,'Success!','FontSize',50,'Color','g');
-                return;
             end
         end
         if b==2                                     %click middle mouse
@@ -107,20 +105,22 @@ function landmine(v)
                 if land(x,y,1)==t
                     for ii=1:9
                         if X(ii)>1&&X(ii)<D&&Y(ii)>1&&Y(ii)<D
-                            if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)~=0)
+                            if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)~=0)           %not open and not zero
                                 land(X(ii),Y(ii),2)=1;
                                 if land(X(ii),Y(ii),1)~=10
-                                    text(X(ii)-0.5,Y(ii)-0.5,num2str(land(X(ii),Y(ii),1)))
+                                    but(X(ii),Y(ii));
+                                    text(X(ii)-0.5,Y(ii)-0.5,num2str(land(X(ii),Y(ii),1)),'Color',[77 77 77]/255)
                                 end
                                 land(X(ii),Y(ii),2)=2;
                             end
-                            if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)==0)
+                            if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)==0)           %not open but zero
                                 land=white(X(ii),Y(ii),land,D);
                                 for ax=2:D-1
                                     for ay=2:D-1
                                         if land(ax,ay,2)==1
-                                            text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)))
-                                            land(ax,ay,2)=2;
+                                            but(ax,ay);
+                                            text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)),'Color',[77 77 77]/255)
+                                            land(ax,ay,2)=land(ax,ay,2)+1;
                                         end
                                     end
                                 end
@@ -128,7 +128,7 @@ function landmine(v)
                         end
                     end
                 end
-                for ax=2:D-1
+                for ax=2:D-1                                    %check if game over
                     for ay=2:D-1
                         if and(land(ax,ay,1)==10,land(ax,ay,2)==2)
                             draw(land,D);                     %draw the all bomb map
@@ -159,6 +159,11 @@ function landmine(v)
         end
         if b==97
             text(D/4,D/2,'Bye Bye','FontSize',50,'Color','r');pause(2.5);close all
+            return;
+        end
+        s=end_or_not(land);
+        if s==(D-2)^2-B
+            text(D/4,D/2,'Success!','FontSize',50,'Color','g');
             return;
         end
     end
@@ -206,7 +211,8 @@ function draw(land,D)                             %draw the whole bomb map
                 plot(xx-0.5,yy-0.5,'kx','Markersize',15,'LineWidth',1.6);
             end
             if and(land(xx,yy,1)~=10,land(xx,yy,2)==0)
-                text(xx-0.5,yy-0.5,num2str(land(xx,yy,1)));
+                but(xx,yy)
+                text(xx-0.5,yy-0.5,num2str(land(xx,yy,1)),'Color',[77 77 77]/255);
             end
         end
     end
@@ -226,4 +232,11 @@ function land=white(xx,yy,land,D)                 %if click is zero then open th
             end
         end
     end
+end
+function but(x,y)
+    U=[y-0.1 y-0.1];
+    L=[y-0.9 y-0.9];
+    x=[x-0.9 x-0.1];
+    L=fliplr(L);y=fliplr(x);
+    fill([x y],[U L],[198 198 198]/255)
 end
