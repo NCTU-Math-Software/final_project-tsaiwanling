@@ -67,7 +67,7 @@ function landmine(v)
                 draw(land,D);                     %draw the all bomb map
                 dl=text(D/5,D/2,'You bomb!','FontSize',45,'Color','b');pause(1.5);
                 delete(dl);
-                text(D/4,D/2,'Bye Bye','FontSize',45,'Color','r');pause(3.5);close all
+                text(D/4,D/2,'Bye Bye','FontSize',45,'Color','r');pause(2.5);close all
                 return;                          %stop the game
             end
             if map(x,y)==0                      %if click the zero
@@ -95,45 +95,48 @@ function landmine(v)
             end
         end
         if b==2                                     %click middle mouse
-            t=0;
-            X=[x x-1 x-1 x-1 x x x+1 x+1 x+1];
-            Y=[y y-1 y y+1 y-1 y+1 y-1 y y+1];
-            for ii=1:9
-                land(X(ii),Y(ii),2)
-                if land(X(ii),Y(ii),2)==3
-                    t=t+1;
-                end
-            end
-            if land(x,y,1)==t
+            if land(x,y,2)==2
+                t=0;
+                X=[x x-1 x-1 x-1 x x x+1 x+1 x+1];
+                Y=[y y-1 y y+1 y-1 y+1 y-1 y y+1];
                 for ii=1:9
-                    if X(ii)>1&&X(ii)<D&&Y(ii)>1&&Y(ii)<D
-                        if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)~=0)
-                            land(X(ii),Y(ii),2)=1;
-                            text(X(ii)-0.5,Y(ii)-0.5,num2str(land(X(ii),Y(ii),1)))
-                            land(X(ii),Y(ii),2)=2;
-                        end
-                        if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)==0)
-                            land=white(X(ii),Y(ii),land,D);
-                            for ax=2:D-1
-                                for ay=2:D-1
-                                    if land(ax,ay,2)==1
-                                        text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)))
-                                        land(ax,ay,2)=2;
+                    if land(X(ii),Y(ii),2)==3
+                          t=t+1;
+                    end
+                end
+                if land(x,y,1)==t
+                    for ii=1:9
+                        if X(ii)>1&&X(ii)<D&&Y(ii)>1&&Y(ii)<D
+                            if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)~=0)
+                                land(X(ii),Y(ii),2)=1;
+                                if land(X(ii),Y(ii),1)~=10
+                                    text(X(ii)-0.5,Y(ii)-0.5,num2str(land(X(ii),Y(ii),1)))
+                                end
+                                land(X(ii),Y(ii),2)=2;
+                            end
+                            if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)==0)
+                                land=white(X(ii),Y(ii),land,D);
+                                for ax=2:D-1
+                                    for ay=2:D-1
+                                        if land(ax,ay,2)==1
+                                            text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)))
+                                            land(ax,ay,2)=2;
+                                        end
                                     end
                                 end
                             end
                         end
                     end
                 end
-            end
-            for ax=2:D-1
-                for ay=2:D-1
-                    if and(land(ax,ay,1)==10,land(ax,ay,2)==2)
-                        draw(land,D);                     %draw the all bomb map
-                        dl=text(D/5,D/2,'You bomb!','FontSize',45,'Color','b');pause(1.5);
-                        delete(dl);
-                        text(D/4,D/2,'Bye Bye','FontSize',45,'Color','r');pause(3.5);close all
-                        return;                          %stop the game
+                for ax=2:D-1
+                    for ay=2:D-1
+                        if and(land(ax,ay,1)==10,land(ax,ay,2)==2)
+                            draw(land,D);                     %draw the all bomb map
+                            dl=text(D/5,D/2,'You bomb!','FontSize',45,'Color','b');pause(1.5);
+                            delete(dl);
+                            text(D/4,D/2,'Bye Bye','FontSize',45,'Color','r');pause(2.5);close all
+                            return;                          %stop the game
+                        end
                     end
                 end
             end
@@ -155,7 +158,7 @@ function landmine(v)
             end
         end
         if b==97
-            text(D/4,D/2,'Bye Bye','FontSize',50,'Color','r');pause(3.5);close all
+            text(D/4,D/2,'Bye Bye','FontSize',50,'Color','r');pause(2.5);close all
             return;
         end
     end
@@ -196,8 +199,11 @@ end
 function draw(land,D)                             %draw the whole bomb map
     for xx=2:D-1
         for yy=2:D-1
-            if land(xx,yy,1)==10
+            if and(land(xx,yy,1)==10,land(xx,yy,2)~=3)
                 plot(xx-0.5,yy-0.5,'ro','LineWidth',1.6);
+            end
+            if and(land(xx,yy,1)~=10,land(xx,yy,2)==3)
+                plot(xx-0.5,yy-0.5,'kx','Markersize',15,'LineWidth',1.6);
             end
             if and(land(xx,yy,1)~=10,land(xx,yy,2)==0)
                 text(xx-0.5,yy-0.5,num2str(land(xx,yy,1)));
