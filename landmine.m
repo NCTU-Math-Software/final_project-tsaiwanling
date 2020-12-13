@@ -2,8 +2,9 @@ function landmine(v)
 %input: 1:easy
 %       2:middle
 %       3:difficult
-%click left mouse to open the square
-%click right mouse to put or get rid of the flag
+%click left mouse to open the square and click right mouse to put or get rid of the flag
+%click middle mouse on the opened square and open the rest square if the
+%numbers of nearing flags equals to the number on the clicked square
 %if you open the bomb then the game over
     switch v
         case 1
@@ -26,7 +27,7 @@ function landmine(v)
     while xx<1 || yy<1 || xx>D-1 || yy>D-1 || b~=1
         [xx,yy,b]=ginput(1);
     end                        
-    %line 30-38:construct the bomb map,which make sure that the first click must be the zero(the numbers of the nearing bomb) 
+    %line 31-39:construct the bomb map,which make sure that the first click must be the zero(the numbers of the nearing bomb) 
     xx=ceil(xx);yy=ceil(yy);                    
     bombx=[xx xx-1 xx-1 xx-1 xx xx xx+1 xx+1 xx+1]; 
     bomby=[yy yy-1 yy yy+1 yy-1 yy+1 yy-1 yy yy+1];
@@ -44,7 +45,7 @@ function landmine(v)
         end
     end
     land=cat(3,map,open);                       %combine the board,one is recording the map another is recording opened or not
-    %line 49-57:since the first click make sure that number is zero,we need to open
+    %line 50-58:since the first click make sure that number is zero,we need to open
     %the square need to be opened
     land=white(xx,yy,land,D);                     %collect the square need to be opened            
     for ax=2:D-1                                 %write the numbers of bomb
@@ -91,6 +92,50 @@ function landmine(v)
             if s==(D-2)^2-B
                 text(D/4,D/2,'Success!','FontSize',50,'Color','g');
                 return;
+            end
+        end
+        if b==2                                     %click middle mouse
+            t=0;
+            X=[x x-1 x-1 x-1 x x x+1 x+1 x+1];
+            Y=[y y-1 y y+1 y-1 y+1 y-1 y y+1];
+            for ii=1:9
+                land(X(ii),Y(ii),2)
+                if land(X(ii),Y(ii),2)==3
+                    t=t+1;
+                end
+            end
+            if land(x,y,1)==t
+                for ii=1:9
+                    if X(ii)>1&&X(ii)<D&&Y(ii)>1&&Y(ii)<D
+                        if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)~=0)
+                            land(X(ii),Y(ii),2)=1;
+                            text(X(ii)-0.5,Y(ii)-0.5,num2str(land(X(ii),Y(ii),1)))
+                            land(X(ii),Y(ii),2)=2;
+                        end
+                        if and(land(X(ii),Y(ii),2)==0,land(X(ii),Y(ii),1)==0)
+                            land=white(X(ii),Y(ii),land,D);
+                            for ax=2:D-1
+                                for ay=2:D-1
+                                    if land(ax,ay,2)==1
+                                        text(ax-0.5,ay-0.5,num2str(land(ax,ay,1)))
+                                        land(ax,ay,2)=2;
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            for ax=2:D-1
+                for ay=2:D-1
+                    if and(land(ax,ay,1)==10,land(ax,ay,2)==2)
+                        draw(land,D);                     %draw the all bomb map
+                        dl=text(D/5,D/2,'You bomb!','FontSize',45,'Color','b');pause(1.5);
+                        delete(dl);
+                        text(D/4,D/2,'Bye Bye','FontSize',45,'Color','r');pause(3.5);close all
+                        return;                          %stop the game
+                    end
+                end
             end
         end
         if b==3                                 %click right
