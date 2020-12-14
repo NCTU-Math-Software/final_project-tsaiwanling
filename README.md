@@ -4,7 +4,6 @@ final_project-tsaiwanling created by GitHub Classroom
 **踩地雷**
 
 Input:
-|:--:|:-:|:--:|
 | 1 簡單 | 9x9 10個地雷 |
 | 2 普通 | 16x16 40個地雷 |
 | 3 困難 | 24x24 99個地雷|
