@@ -11,7 +11,7 @@ Input:
 
 ## Subproject
 #### bomb.m
-/* [x,y]=bomb(n,A,B,D) */  
+` [x,y]=bomb(n,A,B,D) `  
 **想法主要是隨機生成x&y,透過逐一檢查是否和A&B有相同的數對決定是否重新生成(遞迴)**
 >* 此function目的為製造所有炸彈的座標  
 >> x,y是收集地雷的座標  
