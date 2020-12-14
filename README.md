@@ -6,7 +6,7 @@ final_project-tsaiwanling created by GitHub Classroom
 Input:
 * 1 簡單:9x9 10個地雷
 * 2 普通:16x16 40個地雷
-*3 困難:24x24 99個地雷
+* 3 困難:24x24 99個地雷
 
 總共有一個主要程式和六個功能程式
 
