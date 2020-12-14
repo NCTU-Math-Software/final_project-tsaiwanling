@@ -19,20 +19,20 @@ A,B是收集所有地雷的集合,n同時為集合大小
 D是生成地雷座標的bounding(棋盤大小)  
 
 #### end_or_not.m
-*/ s=end_or_not(land) /*
+` s=end_or_not(land) `  
 **當s=總方格數-地雷數，遊戲成功並結束**
 >* 此function目的為檢測是否完成踩地雷(用在單擊滑鼠任意功能時之後，每次單擊完檢查)  
 >> s為開啟過的方格數量  
 land記錄整個棋盤的炸彈位置、鄰近炸彈數及開啟與否，利用D*D*2的矩陣紀錄
 #### check_bomb_number.m
-*/ t=check_bomb_number(xx,yy,map) /*
+` t=check_bomb_number(xx,yy,map) `  
 **令X，Y為(xx,yy)周遭八格的座標，並逐一檢查是否有地雷(if map(X,Y)==10)**
 >* 此function目的為計算沒有地雷的方格鄰近有幾顆地雷(最多8顆最少0顆)  
 >> t為鄰近炸彈數量  
 xx,yy為矩陣上的位置(或是滑鼠單擊的位置)，map為矩陣用來紀錄鄰近地雷數及地雷位置(land=cat(2,map,open))，定義地雷位置的地雷數為10  
 #### draw.m
-*/ draw(land,D) /* 
+` draw(land,D) `  
 #### white.m
-/* land=white(xx,yy,land,D) /* 
+` land=white(xx,yy,land,D) `  
 #### but.m
-*/ but(x,y) /*
+` but(x,y) `  
