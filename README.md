@@ -7,8 +7,8 @@ Input:
 | 2 普通 | 16x16 40個地雷 | 
 | 3 困難 | 24x24 99個地雷| 
 
-## Main Project - Landseeker
-
+## Main Project - Landseeker  
+好多，最後再寫ˊˋ
 ## Subproject
 #### bomb.m
 ` [x,y]=bomb(n,A,B,D) `  
