@@ -13,7 +13,7 @@ Input:
 首先介紹六個程式
 
 # 1.function [x,y]=bomb(n,A,B,D)
-> 此function目的為製造所有炸彈的座標  
+>* 此function目的為製造所有炸彈的座標  
 > x,y是收集地雷的座標  
 > A,B是收集所有地雷的集合,n同時為集合大小  
 > D是生成地雷座標的bounding(棋盤大小)  
