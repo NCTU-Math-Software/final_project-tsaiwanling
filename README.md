@@ -6,7 +6,11 @@ Input:
 | 1 簡單 | 9x9 10個地雷 | 
 | 2 普通 | 16x16 40個地雷 | 
 | 3 困難 | 24x24 99個地雷| 
-
+## Two GUI Project
+#### landseek.m
+遊戲開始的畫面
+#### YN.m
+是否在玩一次
 ## Main Project - Landseeker  
 好多，最後再寫ˊˋ
 ## Subproject
