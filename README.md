@@ -40,3 +40,7 @@ xx,yy為矩陣上的位置(或是滑鼠單擊的位置)，map為矩陣用來紀�
 ` land=white(xx,yy,land,D) `  
 #### but.m
 ` but(x,y) `  
+#### number_color.m
+` s=number_color(ax,ay,land) `  
+#### game_over_or_not.m
+ ` game_over_or_not(land) `
