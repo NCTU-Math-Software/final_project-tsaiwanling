@@ -1,6 +1,7 @@
 # 踩地雷
 
 **Downlond 踩地雷.zip and unzip it  
+All files are zipped in the 踩地雷.zip  
 Please execute the landseek.m in commond window    
 Choose the version which u want**
 | 難度 | 規格 |
