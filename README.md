@@ -23,9 +23,9 @@ Choose the version which u want**
 #### YN.m
 是否在玩一次
 ## Main Project - Landseeker  
-先建構一個DxDx2的矩陣
-第一層DxD存炸彈數字,第二層DxD紀錄開啟與否
-此概念和同學0712216討論而來
+先建構一個DxDx2的矩陣  
+第一層DxD存炸彈數字,第二層DxD紀錄開啟與否  
+此概念和同學0712216討論而來  
 之後即利用subproject完成遊戲
 ## Subproject
 #### bomb.m
