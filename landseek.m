@@ -31,7 +31,7 @@ gui_State = struct('gui_Name',       mfilename, ...
                    'gui_OpeningFcn', @landseek_OpeningFcn, ...
                    'gui_OutputFcn',  @landseek_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
-                   'gui_Callback',   []);
+                   'gui_Callback',   [] );
 if nargin && ischar(varargin{1})
     gui_State.gui_Callback = str2func(varargin{1});
 end
@@ -40,6 +40,7 @@ if nargout
     [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
 else
     gui_mainfcn(gui_State, varargin{:});
+    movegui(gui_mainfcn(gui_State, varargin{:}),'center');
 end
 % End initialization code - DO NOT EDIT
 

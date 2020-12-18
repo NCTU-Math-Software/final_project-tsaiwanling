@@ -6,19 +6,20 @@ function main(v)
 %click middle mouse on the opened square and open the rest square if the
 %numbers of nearing flags equals to the number on the clicked square
 %if you open the bomb then the game over
-    set(0,'defaultfigurecolor','w');screensize=get(0,'ScreenSize');
+    set(0,'defaultfigurecolor','w');win
     switch v
         case 1
             D=11;B=10;
-            figure('Name','Landmine','outerposition',[(screensize(3)-700)/2 (screensize(4)-700)/2 700 700]);
+            figure('Name','Landmine','outerposition',[-700/2 150 700 700]);
             set (gca,'position',[0.001,0.001,0.9999,0.9999]),axis([0 D 0 D]);axis off;hold on;
         case 2
             D=18;B=40;
-            figure('Name','Landmine','outerposition',[(screensize(3)-800)/2 (screensize(4)-800)/2 800 800]);
+            figure('Name','Landmine','outerposition',[400 150 800 800]);
             set (gca,'position',[0.001,0.001,0.9999,0.9999]),axis([0 D 0 D]);axis off;hold on;
         case 3
             D=26;B=99;
-            figure('Name','Landmine','outerposition',[(screensize(3)-800)/2 (screensize(4)-800)/2 800 800]);
+            get('WindowSize',
+            figure('Name','Landmine','outerposition',[400 150 800 800]);
             set (gca,'position',[0.001,0.001,0.9999,0.9999]),axis([0 D 0 D]);axis off;hold on;
     end
     q=0;hp=[];flagX=[];flagY=[];                            %D is the board size,the rest are all for record the flag
