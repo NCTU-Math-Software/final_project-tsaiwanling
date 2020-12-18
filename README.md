@@ -46,11 +46,17 @@ land記錄整個棋盤的炸彈位置、鄰近炸彈數及開啟與否，利用D
 xx,yy為矩陣上的位置(或是滑鼠單擊的位置)，map為矩陣用來紀錄鄰近地雷數及地雷位置(land=cat(2,map,open))，定義地雷位置的地雷數為10  
 #### draw.m
 ` draw(land,D) `  
+**開到炸彈時，畫出全部的答案**
+>* 此function目的是將所有空格開啟並畫出炸彈位置
 #### white.m
 ` land=white(xx,yy,land,D) `  
+**開啟空白和他鄰近的位置**
 #### but.m
 ` but(x,y) `  
+**將開啟的空格給他一個漂亮的底色:)**
 #### number_color.m
-` s=number_color(ax,ay,land) `  
+` s=number_color(ax,ay,land) ` 
+**將數字顏色分類**
 #### game_over_or_not.m
  ` game_over_or_not(land) `
+**判定遊戲是否因踩到炸彈而結束**
