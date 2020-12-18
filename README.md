@@ -1,7 +1,7 @@
 # 踩地雷
 
-please execute the landseek.m  
-choose the version which u want
+**Please execute the landseek.m
+Choose the version which u want**
 | 難度 | 規格 |
 |:--------:|:---------------:|
 | 簡單 | 9x9 10個地雷 | 
