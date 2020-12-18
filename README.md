@@ -1,11 +1,12 @@
 # 踩地雷
 
-Input:  
+please execute the landseek.m
+choose the version which u want
 | 難度 | 規格 |
 |:--------:|:---------------:|
-| 1 簡單 | 9x9 10個地雷 | 
-| 2 普通 | 16x16 40個地雷 | 
-| 3 困難 | 24x24 99個地雷| 
+| 簡單 | 9x9 10個地雷 | 
+| 普通 | 16x16 40個地雷 | 
+| 困難 | 24x24 99個地雷| 
 ## Two GUI Project
 #### landseek.m
 遊戲開始的畫面
