@@ -14,6 +14,7 @@ Choose the version which u want**
 | 右鍵 | 點擊一次立旗子，立過旗子就拔掉 | 
 | 中鍵 | 周圍旗子數量等於該格數字，開啟剩餘周圍空格 |
 | a | 強制關閉遊戲 |  
+
 遊戲結束時會跳出對話框邀請你再玩一次ˊˇˋ
 ## Two GUI Project
 #### landseek.m
