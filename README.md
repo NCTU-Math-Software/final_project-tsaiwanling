@@ -26,7 +26,10 @@ Choose the version which u want**
 先建構一個DxDx2的矩陣  
 第一層DxD存炸彈數字,第二層DxD紀錄開啟與否  
 此概念和同學0712216討論而來  
-之後即利用subproject完成遊戲
+之後即利用subproject完成遊戲  
+## Two PNG
+#### mine.png ` 遊戲封面背景 `
+#### button.png ` 遊戲封面的按鈕圖案 `
 ## Subproject
 #### bomb.m
 ` [x,y]=bomb(n,A,B,D) `  
