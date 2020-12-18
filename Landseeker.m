@@ -29,11 +29,12 @@ function main(v)
     map=zeros(D);                                           %the board with recording the bomb and the numbers
     open=zeros(D);                                          %the board with recording if the square are opened
     xx=0;yy=0;                                              %the first click to start the game
+    plot(D/2-0.5,D-0.5,'r>','MarkerSize',15,'LineWidth',1.6);d=number_of_flag(cat(3,map,open),D,B);
     st=text(D/3,D/2,'Start!','FontSize',45,'Color','g');pause(1.5);delete(st);
     while xx<1 || yy<1 || xx>D-1 || yy>D-1 || b~=1
         [xx,yy,b]=ginput(1);
     end                        
-    %line 36-44:construct the bomb map,which make sure that the first click must be the zero(the numbers of the nearing bomb) 
+    %line 38-53:construct the bomb map,which make sure that the first click must be the zero(the numbers of the nearing bomb) 
     xx=ceil(xx);yy=ceil(yy);                    
     bombx=[xx xx-1 xx-1 xx-1 xx xx xx+1 xx+1 xx+1]; 
     bomby=[yy yy-1 yy yy+1 yy-1 yy+1 yy-1 yy yy+1];
@@ -43,7 +44,6 @@ function main(v)
         map(x,y)=10;
     end
     bombx(:,1:9)=[];bomby(:,1:9)=[];
-    %plot(bombx-0.5,bomby-0.5,'ro')
     for ax=2:D-1
         for ay=2:D-1
             t=check_bomb_number(ax,ay,map);
@@ -51,7 +51,7 @@ function main(v)
         end
     end
     land=cat(3,map,open);                                   %combine the board,one is recording the map another is recording opened or not
-    %line 55-64:since the first click make sure that number is zero,we need to open
+    %line 56-65:since the first click make sure that number is zero,we need to open
     %the square need to be opened
     land=white(xx,yy,land,D);                               %collect the square need to be opened            
     for ax=2:D-1                                            %write the numbers of bomb
@@ -72,6 +72,7 @@ function main(v)
         if b==1                                             %left click
             if and(map(x,y)==10,land(x,y,2)==0)             %if click the bomb
                 draw(land,D);                               %draw the all bomb map
+                plot(x-0.5,y-0.5,'ro','MarkerSize',15,'LineWidth',1.6)
                 text(D/3,D/2,'You bomb!','FontSize',45,'Color','r');pause(1.5);
                 YN
                 return;                                     %stop the game
@@ -155,6 +156,8 @@ function main(v)
             text(D/3,D/2,'Bye Bye','FontSize',50,'Color','r');pause(1.5);close all
             return;
         end
+        delete(d);
+        d=number_of_flag(land,D,B);
         s=end_or_not(land);
         if s==(D-2)^2-B
             text(D/3,D/2,'Success!','FontSize',50,'Color','r');

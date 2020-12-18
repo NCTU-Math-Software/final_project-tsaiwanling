@@ -22,7 +22,7 @@ function varargout = YN(varargin)
 
 % Edit the above text to modify the response to help YN
 
-% Last Modified by GUIDE v2.5 16-Dec-2020 12:55:33
+% Last Modified by GUIDE v2.5 18-Dec-2020 22:55:04
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -40,7 +40,6 @@ if nargout
     [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
 else
     gui_mainfcn(gui_State, varargin{:});
-    movegui(gui_mainfcn(gui_State, varargin{:}),'center');
 end
 % End initialization code - DO NOT EDIT
 
@@ -76,8 +75,7 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in pushbutton1.
 function pushbutton1_Callback(hObject, eventdata, handles)
-    close(gcbf)
-    close all;
+    close(gcbf);close all;
     landseek
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -86,8 +84,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
-    close(gcbf)
-    close all;
+    close(gcbf);close all;
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
