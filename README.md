@@ -4,7 +4,8 @@
 所有的檔案都壓縮在踩地雷.zip裡  
 請在命令視窗中執行landseek.m  
 並且選擇你想完的難度  
-Downlond 踩地雷.zip and unzip it  
+  
+**Downlond 踩地雷.zip and unzip it  
 All files are zipped in the 踩地雷.zip  
 Please execute the landseek.m in commond window    
 Choose the difficulty which u want**
