@@ -25,15 +25,13 @@ function varargout = landseek(varargin)
 % Last Modified by GUIDE v2.5 19-Dec-2020 00:17:11
 
 % Begin initialization code - DO NOT EDIT
-gui_Singleton = 1;s=get(0,'ScreenSize');
+gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @landseek_OpeningFcn, ...
                    'gui_OutputFcn',  @landseek_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
-                   'gui_Callback',   [] , ...
-                   'gui_Position_x', s(3)-600/2,...
-                   'gui_Position_y', s(4)-500/2);
+                   'gui_Callback',   [] );
 if nargin && ischar(varargin{1})
     gui_State.gui_Callback = str2func(varargin{1});
 end
@@ -48,6 +46,15 @@ end
 
 % --- Executes just before landseek is made visible.
 function landseek_OpeningFcn(hObject, eventdata, handles, varargin)
+    s=get(0,'ScreenSize');
+    set(handles.figure1,'Units', 'pixels','Position', [(s(3)-600)/2 (s(4)-500)/2 600 500]);
+    
+    set(handles.axes1,'Units', 'pixels','Position', [0 0 600 500]);
+    
+    set(handles.pushbutton1,'Units', 'pixels','Position', [100 110 70 40]);
+    set(handles.pushbutton2,'Units', 'pixels','Position', [265 110 70 40]);
+    set(handles.pushbutton3,'Units', 'pixels','Position', [430 110 70 40]);
+    
     backgroundImage = imread('mine.png');
     axes(handles.axes1);
     image(backgroundImage);

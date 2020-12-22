@@ -52,6 +52,14 @@ function YN_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to YN (see VARARGIN)
 
+s=get(0,'ScreenSize');
+set(handles.figure1,'Units', 'pixels','Position', [(s(3)-300)/2 (s(4)-150)/2 300 150]);
+
+set(handles.text2,'Units','pixels','Position',[0 0 300 150]);
+
+set(handles.pushbutton1,'Units','pixels','Position',[28 28 90 30]);
+set(handles.pushbutton2,'Units','pixels','Position',[182 28 90 30]);
+
 % Choose default command line output for YN
 handles.output = hObject;
 
