@@ -1,14 +1,7 @@
 # 踩地雷
 
-**下載 踩地雷.zip 及解壓縮  
-所有的檔案都壓縮在踩地雷.zip裡  
-請在命令視窗中執行landseek.m  
+**請在命令視窗中執行landseek.m  
 並且選擇你想玩的難度**
-  
-**Downlond 踩地雷.zip and unzip it  
-All files are zipped in the 踩地雷.zip  
-Please execute the landseek.m in commond window    
-Choose the difficulty which u want**
 | 難度 | 規格 |
 |:--------:|:---------------:|
 | 簡單 | 9x9 10個地雷 | 
